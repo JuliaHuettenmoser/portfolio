@@ -1,9 +1,9 @@
 # Amiiwho
 
-Amiiwho ist eine Webseite, auf der man eine Liste von allen bekannten Amiibos finden kann. Die Seite enthält eine Suchfunktion als auch eine Funktion, um Amibos zu favorisieren, die man nachher schnell wiederfinden kann.
+Amiiwho ist eine Webseite, auf der man alle bekannten Amiibos finden kann. Die Seite enthält eine Suchfunktion als auch eine Funktion, um Amibos zu favorisieren, die man nachher schnell wiederfinden kann.
 
 Diese Seite wurde ursprünglich im Rahmen von M293 kreiert, um zu lernen, wie man mit APIs umgeht.\
-Danach haben wir die Seite im Rahmen von M324 benutzt um DevOps Prozesse zu lernen.
+Danach haben wir die Seite im Rahmen von M324 benutzt um DevOps Prozesse zu lernen und sie dabei bearbeitet, optimiert und fehleranfällige Funktionen entfernt.
 
 ## Links
 
