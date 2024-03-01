@@ -16,7 +16,7 @@ function createSearches(data) {
 }
 function makedaAmiibo(amiibo) {
     currentAmiibo = amiibo
-    showEditandDelete()
+    // showEditandDelete()
     console.log(amiibo);
     getPicture(amiibo);
     getInformation(amiibo);
@@ -50,16 +50,8 @@ function removeEverything() {
     document.getElementById("picture").innerHTML = ""
     document.getElementById("bookmarked").innerHTML=""
 }
-function showEditandDelete() {
-    document.getElementById("editBtn").style.display = "block"
-    document.getElementById("delBtn").style.display = "block"
-}
-function hideEditandDelete() {
-    document.getElementById("editBtn").style.display = "none"
-    document.getElementById("delBtn").style.display = "none"
-}
+
 function sayhitoBookmarks() {
-    hideEditandDelete()
     let listOfBookmarks = ""
     for (let amiibo of bookmarks) {
         listOfBookmarks = listOfBookmarks.concat('\n',`<div class="text" id="bookmark-${amiibo[0]}">${amiibo[1]} | ${amiibo[2]}</div><div class="text" id="delete-${amiibo[0]}"><input id = "makeDeletion" type="image" class = "delete" src="img/trash-bin.png"/></div>`)
@@ -97,7 +89,6 @@ function makeDeletion() {
 function deleteEntry() {
     deletedAmiibos = deletedAmiibos.concat(currentAmiibo.tail)
     removeEverything()
-    hideEditandDelete()
 }
 function checkDeleted(data) {
     for (let [i,amiibo] of data.amiibo.entries()){
@@ -136,12 +127,7 @@ document.getElementById("bookmark").addEventListener("click", (e) => {
     removeEverything();
     sayhitoBookmarks();
 })
-document.getElementById("newBtn").addEventListener("click", (e) => document.getElementById("newIt").style.display = "block")
-document.getElementById("editBtn").addEventListener("click", (e)=> document.getElementById("editIt").style.display = "block")
-document.getElementById("delBtn").addEventListener("click", (e) => {
-    deleteEntry()
-    console.log(deletedAmiibos)
-})
+
 document.getElementById("newIt").addEventListener("submit", (e) => {
     e.preventDefault();
     let newAmiibo = {}
