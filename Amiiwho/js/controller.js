@@ -9,13 +9,44 @@ window.addEventListener('load', () => {
     const storedBookmarks = localStorage.getItem('bookmarks');
     if (storedBookmarks) {
         bookmarks = JSON.parse(storedBookmarks);
-        // After loading bookmarks, display them
-        sayhitoBookmarks();
     }
 });
 
+// Load bookmarks from local storage
+window.addEventListener('load', () => {
+    const storedBookmarks = localStorage.getItem('bookmarks');
+    if (storedBookmarks) {
+        bookmarks = JSON.parse(storedBookmarks);
+    }
+});
+
+window.addEventListener("load", () =>{
+    document.getElementByClass("homepage-text").display = "visble"
+
+});
+
+document.getElementById('logo').addEventListener('click', function() {
+    returnToHome();
+});
+
+function showText() {
+    var elements = document.getElementsByClassName("homepage-text");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "block";
+    }
+}
+
+
+function hideText() {
+    var elements = document.getElementsByClassName("homepage-text");
+    for (var i = 0; i < elements.length; i++) {
+        elements[i].style.display = "none";
+    }
+}
+
 function createSearches(data) {
     removeEverything();
+    hideText();
     let list = "";
     let i = 0;
     for (d of data.amiibo) {
@@ -55,6 +86,15 @@ function removeEverything() {
     document.getElementById("bookmarked").innerHTML = "";
 }
 
+function returnToHome(){
+    document.getElementById("searched").innerHTML = "";
+    document.getElementById("information").innerHTML = "";
+    document.getElementById("picture").innerHTML = "";
+    document.getElementById("bookmarked").innerHTML = "";
+    showText();
+}
+
+// bookmark an amiibo
 function makeLikeFunction(amiibo) {
     document.getElementById("like").addEventListener("click", (e) => {
         e.preventDefault();
@@ -65,6 +105,7 @@ function makeLikeFunction(amiibo) {
     });
 }
 
+// load bookmarks
 function sayhitoBookmarks() {
     let listOfBookmarks = "";
     for (let amiibo of bookmarks) {
@@ -105,23 +146,12 @@ function makeDeletion() {
     }
 }
 
-function deleteEntry() {
-    deletedAmiibos = deletedAmiibos.concat(currentAmiibo.tail);
-    removeEverything();
-}
-
 function checkDeleted(data) {
     for (let [i, amiibo] of data.amiibo.entries()) {
         if (deletedAmiibos.includes(amiibo.tail)) {
             data.amiibo.splice(i, 1);
         }
     }
-    console.log(data);
-    return data;
-}
-
-function addNew(data) {
-    data = data.amiibo.concat(newAmiibos);
     console.log(data);
     return data;
 }
